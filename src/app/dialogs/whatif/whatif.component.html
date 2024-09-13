@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>What If?</h2>
+<mat-dialog-content>
+  <p>{{data.vTeam}} vs {{data.hTeam}}</p>
+  <p>Final Score:</p>
+  <mat-form-field>
+    <mat-label>{{data.vTeam}}</mat-label>
+    <input matInput [(ngModel)]="datax.vScore" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{data.hTeam}}</mat-label>
+    <input matInput [(ngModel)]="datax.hScore" />
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="datax" cdkFocusInitial>Submit</button>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+</mat-dialog-actions>
