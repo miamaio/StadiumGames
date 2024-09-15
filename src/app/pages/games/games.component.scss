@@ -1,26 +1,88 @@
 .multiline-mat-select {
-    white-space: normal;
-    line-height: normal;
-    //width:9000px; 
-    //background-color: rgb(247, 247, 208); 
-    font-size: 14px;
-  }
+  white-space: normal;
+  line-height: normal;
+  //width:9000px;
+  //background-color: rgb(247, 247, 208);
+  font-size: 14px;
+}
 
-  .multiline-mat-option {
-    white-space: normal;
-    line-height: normal;
-    //width:5000px; 
-    background-color: rgb(247, 247, 208); 
-    font-size: 14px;
-    
-  }
-  
+.multiline-mat-option {
+  white-space: normal;
+  line-height: normal;
+  //width:5000px;
+  background-color: rgb(247, 247, 208);
+  font-size: 14px;
+}
 
+//.mat-select-content{
+//}
 
-  //.mat-select-content{
-  //} 
+.fallback-text {
+  text-align: center;
+}
 
-  .fallback-text {
-    text-align: center;
-  }
-  
+.games-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.full-width {
+  flex-basis: 100%;
+}
+.column {
+  display: flex;
+  justify-content: center;
+}
+.mat-mdc-form-field {
+  width: 340px;
+}
+.tableSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.mat-column-betType {
+  // width: 28px;
+  border-right: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  //  padding-right: 24px;
+  text-align: left;
+}
+.mat-column-graded {
+  width: 20px;
+  border-right: 1px solid currentColor;
+  //  padding-right: 24px;
+  text-align: left;
+}
+.mat-column-gradedHandle {
+  // width: auto;
+  border-right: 1px solid currentColor;
+  // padding-right: 24px;
+  text-align: left;
+}
+.mat-column-gradedHold {
+  ////  width: 32px;
+  border-right: 1px solid currentColor;
+  // padding-right: 24px;
+  text-align: left;
+}
+.mat-column-holdPct {
+  //  width: 32px;
+  border-right: 1px solid currentColor;
+  // padding-right: 24px;
+  text-align: left;
+}
+.mat-column-ungraded {
+  // width: 32px;
+  border-right: 1px solid currentColor;
+  //  padding-right: 24px;
+  text-align: left;
+}
+.mdc-data-table__cell,
+.mdc-data-table__header-cell {
+  padding: 0 10px;
+}

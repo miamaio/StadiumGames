@@ -1,114 +1,137 @@
-<!--
-<select name="Leaguegroups" id="Leaguegroups">
-
-    @for (lg of leaguegroups; track lg.idLeagueGroup)
-    {
-        <option value="{{ lg.idLeagueGroup }}">{{ lg.description }}</option>
-    }
-
-</select>
--->
-
-<!-- 
-<label for="Leaguegroups">League<br>Group:</label>
--->
-<mat-form-field class="multiline-mat-select">
-  <mat-label class="multiline-mat-select">Choose a League Group:</mat-label>
-  <mat-select class="multiline-mat-select" (selectionChange)="onLeaguegroupChange($event.value)">
-    @for (lg of leaguegroups; track lg.idLeagueGroup){
-      <mat-option class="multiline-mat-option" [value]="lg.idLeagueGroup">{{lg.description}}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>
-
-<br>
-
-<mat-form-field class="multiline-mat-select">
-  <mat-label class="multiline-mat-select">Choose a League:</mat-label>
-  <mat-select class="multiline-mat-select" [(ngModel)]="nullLeagueSelect" [disabled]="isLeagueDisabled" (selectionChange)="onLeagueChange($event.value)">
-    @for (l of leagues; track l.idLeague){
-      <mat-option class="multiline-mat-option" [value]="l.idLeague">{{l.description}}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>
-
-<br>
-
-<mat-form-field class="multiline-mat-select">
-  <mat-label class="multiline-mat-select">Choose a Game:</mat-label>
-  <mat-select class="multiline-mat-select" [(ngModel)]="nullGameSelect" [disabled]="isGameDisabled" (selectionChange)="onGameChange($event.value)">
-    @for (g of games; track g.idGame){
-      <mat-option class="multiline-mat-option"  
-        [value]="g.idGame">
-          <div>{{g.vRotationNbr}}-{{g.vTeam}}</div>
-          <div>{{g.hRotationNbr}}-{{g.hTeam}}</div>
-          <div>{{g.gameDateTime}}</div>
-          <mat-divider [inset]="false"></mat-divider>
-      </mat-option>
-    }
-  </mat-select>
-</mat-form-field>
-
-<br>
-
-<mat-form-field class="multiline-mat-select">
-  <mat-label class="multiline-mat-select">Choose a Game Function:</mat-label>
-  <mat-select class="multiline-mat-select" [(ngModel)]="nullGameFunctionSelect" [disabled]="isGameFunctionDisabled" (selectionChange)="onGameFunctionChange($event.value)">
-    @for (gf of gameFunctions; track gf.idGameFunction){
-      <mat-option class="multiline-mat-option" [value]="gf.idGameFunction">{{gf.description}}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>
-
-<br>
-
+<div class="games-page">
+  <div class="full-width">
+    <div class="column">
+      <mat-form-field class="multiline-mat-select">
+        <mat-label class="multiline-mat-select"
+          >Choose a League Group:</mat-label
+        >
+        <mat-select
+          class="multiline-mat-select"
+          (selectionChange)="onLeaguegroupChange($event.value)"
+        >
+          @for (lg of leaguegroups; track lg.idLeagueGroup){
+          <mat-option class="multiline-mat-option" [value]="lg.idLeagueGroup">{{
+            lg.description
+          }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="full-width">
+    <div class="column">
+      <mat-form-field class="multiline-mat-select">
+        <mat-label class="multiline-mat-select">Choose a League:</mat-label>
+        <mat-select
+          class="multiline-mat-select"
+          [(ngModel)]="nullLeagueSelect"
+          [disabled]="isLeagueDisabled"
+          (selectionChange)="onLeagueChange($event.value)"
+        >
+          @for (l of leagues; track l.idLeague){
+          <mat-option class="multiline-mat-option" [value]="l.idLeague">{{
+            l.description
+          }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="full-width">
+    <div class="column">
+      <mat-form-field class="multiline-mat-select">
+        <mat-label class="multiline-mat-select">Choose a Game:</mat-label>
+        <mat-select
+          class="multiline-mat-select"
+          [(ngModel)]="nullGameSelect"
+          [disabled]="isGameDisabled"
+          (selectionChange)="onGameChange($event.value)"
+        >
+          @for (g of games; track g.idGame){
+          <mat-option class="multiline-mat-option" [value]="g.idGame">
+            <div>{{ g.vRotationNbr }}-{{ g.vTeam }}</div>
+            <div>{{ g.hRotationNbr }}-{{ g.hTeam }}</div>
+            <div>{{ g.gameDateTime }}</div>
+            <mat-divider [inset]="false"></mat-divider>
+          </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="full-width">
+    <div class="column">
+      <mat-form-field class="multiline-mat-select">
+        <mat-label class="multiline-mat-select"
+          >Choose a Game Function:</mat-label
+        >
+        <mat-select
+          class="multiline-mat-select"
+          [(ngModel)]="nullGameFunctionSelect"
+          [disabled]="isGameFunctionDisabled"
+          (selectionChange)="onGameFunctionChange($event.value)"
+        >
+          @for (gf of gameFunctions; track gf.idGameFunction){
+          <mat-option
+            class="multiline-mat-option"
+            [value]="gf.idGameFunction"
+            >{{ gf.description }}</mat-option
+          >
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
 @if (isReportTableLoading){
+<div>
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
 }
-
-@if (!isReportTableHidden){
-
-    <div>
-      <table mat-table [dataSource]="whatIfs">
+<div class="tableSection">
+  @if (!isReportTableHidden) {
+  <div class="full-width">
+    <table mat-table [dataSource]="whatIfs">
       <ng-container matColumnDef="betType">
         <th mat-header-cell *matHeaderCellDef>Bet Type</th>
-        <td mat-cell *matCellDef="let whatIf"> {{whatIf.betType}}</td>
+        <td mat-cell *matCellDef="let whatIf">{{ whatIf.betType }}</td>
       </ng-container>
 
       <ng-container matColumnDef="graded">
         <th mat-header-cell *matHeaderCellDef>Graded</th>
-        <td mat-cell *matCellDef="let whatIf"> {{whatIf.graded}}</td>
+        <td mat-cell *matCellDef="let whatIf">{{ whatIf.graded }}</td>
       </ng-container>
 
       <ng-container matColumnDef="gradedHandle">
         <th mat-header-cell *matHeaderCellDef>Handle</th>
-        <td mat-cell *matCellDef="let whatIf"> {{whatIf.gradedHandle}}</td>
+        <td mat-cell *matCellDef="let whatIf">
+          {{ whatIf.gradedHandle | currency }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="gradedHold">
         <th mat-header-cell *matHeaderCellDef>Hold</th>
-        <td mat-cell *matCellDef="let whatIf"> {{whatIf.gradedHold}}</td>
+        <td mat-cell *matCellDef="let whatIf">
+          {{ whatIf.gradedHold | currency }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="holdPct">
         <th mat-header-cell *matHeaderCellDef>Hold %</th>
-        <td mat-cell *matCellDef="let whatIf"> {{whatIf.holdPct}}</td>
+        <td mat-cell *matCellDef="let whatIf">{{ whatIf.holdPct }}%</td>
       </ng-container>
 
       <ng-container matColumnDef="ungraded">
-        <th mat-header-cell *matHeaderCellDef>Ungraded</th>
-        <td mat-cell *matCellDef="let whatIf"> {{whatIf.ungraded}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="ungradedHandle">
-        <th mat-header-cell *matHeaderCellDef>Ungraded Handle</th>
-        <td mat-cell *matCellDef="let whatIf"> {{whatIf.ungradedHandle}}</td>
+        <th mat-header-cell *matHeaderCellDef>Ungraded / Handle</th>
+        <td mat-cell *matCellDef="let whatIf">
+          {{ whatIf.ungraded }} / {{ whatIf.ungradedHandle | currency }}
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedWhatIfColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedWhatIfColumns;"></tr>  
+      <tr mat-row *matRowDef="let row; columns: displayedWhatIfColumns"></tr>
     </table>
-
   </div>
 
-}
+  }
+</div>
